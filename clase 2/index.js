@@ -82,20 +82,33 @@ console.log(persona1.getListaTel());
 
 const proceso = {
     facturas: [{codigo:1,desc:"medias",importe: 1000},
-               {codigo:2,desc:"zapas",importe: 20000} 
+               {codigo:2,desc:"zapas",importe: 20000}, 
                {codigo:3,desc:"remera",importe: 5000}] ,
     recibos: [ { codigo:1, numFacutra: 1, importe: 800},
                { codigo:2, numFacutra: 3, importe: 5000}, 
                   ],
     getCalcularSaldoFacturas: function() {
         // todas
+        const rta = []
+        for(let i=0; i<this.facturas.length;i++) {
+            const objSaldo = this.facturas[i];
+            objSaldo.saldo = 0;
+            for(let j=0; j < this.recibos.length; j++) {
+                const recibo = this.recibos[j];
+                // falta comparar codigo de factura
+                // numFactura de recibo
+                objSaldo.saldo = objSaldo.importe - recibo.importe;
+            }
+            rta.push(objSaldo);
+        }
+        return rta;
     },
     getTraerFacturasImpagas: function() {
         // solo impagas    
     }
 }
 
-
+console.log(proceso.getCalcularSaldoFacturas());
 
 
 
