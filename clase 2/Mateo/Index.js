@@ -6,4 +6,8 @@ const celular = {
 
 }
 
-console.log(celular);
+const funcion = () => {
+    return celular;
+}
+
+console.log(funcion());

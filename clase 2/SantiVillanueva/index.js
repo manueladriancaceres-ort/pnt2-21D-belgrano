@@ -3,4 +3,9 @@ const persona = {
     nombre: "sanitago",
     apellido: "villanueva",   
 }
-const unaVariable = 
+const unaFuncion = function() {
+    return persona;
+}
+console.log(unaFuncion());
+
+const 
