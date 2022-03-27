@@ -82,7 +82,7 @@ console.log(persona1.getListaTel());
 
 const proceso = {
     facturas: [{codigo:1,desc:"medias",importe: 1000},
-               {codigo:2,desc:"zapas",importe: 20000} 
+               {codigo:2,desc:"zapas",importe: 20000},
                {codigo:3,desc:"remera",importe: 5000}] ,
     recibos: [ { codigo:1, numFacutra: 1, importe: 800},
                { codigo:2, numFacutra: 3, importe: 5000}, 
