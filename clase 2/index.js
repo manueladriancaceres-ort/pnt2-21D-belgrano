@@ -89,13 +89,26 @@ const proceso = {
                   ],
     getCalcularSaldoFacturas: function() {
         // todas
+        const rta = []
+        for(let i=0; i<this.facturas.length;i++) {
+            const objSaldo = this.facturas[i];
+            objSaldo.saldo = 0;
+            for(let j=0; j < this.recibos.length; j++) {
+                const recibo = this.recibos[j];
+                // falta comparar codigo de factura
+                // numFactura de recibo
+                objSaldo.saldo = objSaldo.importe - recibo.importe;
+            }
+            rta.push(objSaldo);
+        }
+        return rta;
     },
     getTraerFacturasImpagas: function() {
         // solo impagas    
     }
 }
 
-
+console.log(proceso.getCalcularSaldoFacturas());
 
 
 
