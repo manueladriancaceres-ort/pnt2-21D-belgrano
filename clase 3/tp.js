@@ -14,17 +14,30 @@ const proceso = {
                { codigo:3, numFacutra: 5, importe: 25000}, 
                   ],
     getCalcularSaldoTodasLasFacturas: function() {
-        const rta = []
         // agregar propiedad saldo (importe factura - importe recibo ) (uno a uno)
-        return rta;
+        const nuevaFactura = proceso.facturas.map( factura => ({ 
+            codigo: factura.codigo, 
+            importe: factura.importe,
+            pagado: proceso.recibos.filter(recibo => recibo.numFacutra === factura.codigo).map(recibo => recibo.importe)[0] == undefined ? 0 :
+            proceso.recibos.filter(recibo => recibo.numFacutra === factura.codigo).map(recibo => recibo.importe)[0],
+            saldo: factura.importe - (proceso.recibos.filter(recibo => recibo.numFacutra === factura.codigo).map(recibo => recibo.importe)[0] == undefined ? 0 :
+            proceso.recibos.filter(recibo => recibo.numFacutra === factura.codigo).map(recibo => recibo.importe)[0]),
+        }) );
+        return nuevaFactura;
+        
     },
     getTraerFacturasImpagas: function() {
         // solo impagas    
+        const facturasImpagas = this.getCalcularSaldoTodasLasFacturas();
+        return facturasImpagas.filter(f => f.saldo != 0);
     },
+    // revisar
     getTotalFacturasImpgas: function() {
-        
+        return this.getTotalFacturasImpgas().reduce((sum,factura) => (sum+factura.saldo),0 );
     }
 
 }
 
 console.log(proceso.getCalcularSaldoTodasLasFacturas());
+console.log(proceso.getTraerFacturasImpagas());
+// console.log(proceso.getTotalFacturasImpgas());
