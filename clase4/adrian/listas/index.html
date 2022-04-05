@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <div id="app">
+        <li v-for="(producto,index) in productos">
+           {{index}} {{ producto.id }} {{producto.desc}} {{producto.precio}}
+        </li>
+        <button @click="ordenarPorPrecio" >Ordenar</button>
+        <p>Id <input v-model="producto.id">
+        Descripcion <input v-model="producto.desc">
+        Precio <input v-model="producto.precio"></p> 
+        <button @click="agregarProducto">Agregar producto</button>
+    </div>    
+    <script src="index.js"></script>
+</body>
+</html>
